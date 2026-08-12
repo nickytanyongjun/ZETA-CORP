@@ -29,6 +29,13 @@ def index():
     return render_template('index.html')
 
 
+# Google Search Console verification route
+@app.route('/googleb79ebf4d41d28e1d.html')
+def google_verification():
+    # Return the exact content that Google gave you
+    return 'google-site-verification: googleb79ebf4d41d28e1d.html'
+
+
 if __name__ == '__main__':
     # host='0.0.0.0' makes it reachable from other devices on the same
     # network, not just this computer. Set debug=False when you're done
