@@ -196,20 +196,25 @@
     background:#0D0E13;
     border-radius:2px;
   }
+  /* FIX: animate clip-path instead of max-height.
+     clip-path only hides part of the receipt visually, so the receipt
+     keeps its full space in the layout and the page below no longer
+     jumps up and down on mobile. */
   .ticket-wrap{
     width:280px;
     margin-top:-2px;
     overflow:hidden;
     max-height:420px;
+    clip-path:inset(0 0 100% 0);
     animation:feed 7s steps(60) infinite;
     animation-delay:0.6s;
   }
   @keyframes feed{
-    0%{max-height:0px;}
-    8%{max-height:0px;}
-    72%{max-height:420px;}
-    92%{max-height:420px;}
-    100%{max-height:0px;}
+    0%{clip-path:inset(0 0 100% 0);}
+    8%{clip-path:inset(0 0 100% 0);}
+    72%{clip-path:inset(0 0 0 0);}
+    92%{clip-path:inset(0 0 0 0);}
+    100%{clip-path:inset(0 0 100% 0);}
   }
   .ticket{
     background:#FBFAF6;
@@ -736,7 +741,7 @@
   .reveal.in{opacity:1; transform:translateY(0);}
   @media (prefers-reduced-motion:reduce){
     .reveal{opacity:1; transform:none; transition:none;}
-    .ticket-wrap{animation:none; max-height:420px;}
+    .ticket-wrap{animation:none; clip-path:none;}
   }
 </style>
 </head>
@@ -778,8 +783,8 @@
         <div class="printer-slot"></div>
         <div class="ticket-wrap">
           <div class="ticket">
-            <div class="t-head">TILLSTACK</div>
-            <div class="t-sub">by ZETA — Table 04</div>
+            <div class="t-head">OK POS</div>
+            <div class="t-sub">by OK POS — Table 04</div>
             <hr>
             <div class="row"><span>1× Curry Mee</span><span>8.50</span></div>
             <div class="row muted"><span>Yellow Mee, Small</span><span></span></div>
@@ -801,15 +806,15 @@
 
 <section class="reviews-strip" id="reviews">
   <div class="wrap">
-    <div class="label">Currently running on Tillstack</div>
+    <div class="label">Currently running on OK POS</div>
     <div class="spotlight-review reveal">
       <div class="stars" style="font-size:1rem;">★★★★★</div>
-      <p class="spotlight-quote">"We used to close the day with a calculator and a stack of paper tickets, always hoping the cash matched. Since moving to Tillstack, orders go straight to the kitchen, receipts print correctly for every customer, and closing the till is one button instead of twenty minutes of second-guessing. It's just running quietly in the background now, which is exactly what we wanted."</p>
+      <p class="spotlight-quote">"We used to close the day with a calculator and a stack of paper tickets, always hoping the cash matched. Since moving to OK POS, orders go straight to the kitchen, receipts print correctly for every customer, and closing the till is one button instead of twenty minutes of second-guessing. It's just running quietly in the background now, which is exactly what we wanted."</p>
       <div class="spotlight-who">
         <div class="review-avatar" style="width:44px;height:44px;font-size:1rem;">OK</div>
         <div>
           <div class="spotlight-name">One Kee</div>
-          <div class="spotlight-role">Live on Tillstack since launch</div>
+          <div class="spotlight-role">Live on OK POS since launch</div>
         </div>
       </div>
     </div>
@@ -828,7 +833,7 @@
       <p>We build for the people who use the software every day — the cashier during the lunch rush, the kitchen reading an order, the manager closing up at night. Before we ship anything, we ask one simple question: does this make their day easier?</p>
       <p>We're a small studio, and we'd rather build a few things really well than many things half-finished. Right now that's one product already helping businesses every day, with a second one on the way.</p>
       <div class="stat-row">
-        <div><div class="num">40+</div><div class="lbl">businesses running Tillstack</div></div>
+        <div><div class="num">40+</div><div class="lbl">businesses running OK POS</div></div>
         <div><div class="num">0.9s</div><div class="lbl">avg. ticket close time</div></div>
         <div><div class="num">1</div><div class="lbl">shift to learn it</div></div>
       </div>
@@ -844,7 +849,7 @@
     <div class="product-card reveal">
       <div>
         <span class="product-tag tag-live">● Live &amp; in use</span>
-        <h3>Tillstack</h3>
+        <h3>OK POS</h3>
         <p class="tagline">Take orders, fire kitchen tickets, and close the till — from any device, in sync, without training day.</p>
         <ul class="feat-list">
           <li>Tap-to-order tables and takeaway, synced live across every device in the shop</li>
@@ -898,7 +903,7 @@
     <div class="pricing-layout">
       <div class="price-card reveal">
         <span class="ptag">One-time purchase</span>
-        <div class="pname">Tillstack</div>
+        <div class="pname">OK POS</div>
         <div class="price-figure"><span class="cur">RM</span><span class="amt">1,200</span></div>
         <div class="price-note">Paid once. No monthly fee, no per-transaction cut.</div>
         <ul>
@@ -918,14 +923,14 @@
             <div class="step-num">01</div>
             <div>
               <h4>You buy the code</h4>
-              <p>A one-time payment of RM1,200 gets you the complete Tillstack source code, licensed for your business.</p>
+              <p>A one-time payment of RM1,200 gets you the complete OK POS source code, licensed for your business.</p>
             </div>
           </div>
           <div class="step reveal">
             <div class="step-num">02</div>
             <div>
               <h4>You host it</h4>
-              <p>Tillstack runs on hardware you control — a shop PC, a local server, whatever you already have. We help you get it running, but you own where it lives.</p>
+              <p>OK POS runs on hardware you control — a shop PC, a local server, whatever you already have. We help you get it running, but you own where it lives.</p>
             </div>
           </div>
           <div class="step reveal">
@@ -955,9 +960,9 @@
   <div class="wrap">
     <span class="section-eyebrow">Get in touch</span>
     <h2>Tell us what's slowing your team down.</h2>
-    <p>Whether it's a counter that needs Tillstack or you want early access to Hirey, message us directly — no forms, no ticket queue.</p>
-    <a class="btn-whatsapp" href="https://wa.me/60169356311" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.29-.15-1.7-.84-1.97-.93-.26-.1-.46-.15-.65.15-.2.29-.75.93-.92 1.12-.17.2-.34.22-.63.08-.29-.15-1.22-.45-2.32-1.43-.86-.76-1.44-1.71-1.6-2-.17-.29-.02-.45.13-.6.13-.13.29-.34.43-.51.15-.17.2-.29.29-.48.1-.2.05-.37-.02-.51-.08-.15-.65-1.56-.89-2.14-.23-.56-.47-.48-.65-.49-.17-.01-.36-.01-.56-.01-.2 0-.51.07-.78.37-.26.29-1.02 1-1.02 2.42 0 1.43 1.04 2.81 1.19 3 .15.2 2.05 3.13 4.96 4.39.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.11.55-.08 1.7-.7 1.94-1.36.24-.67.24-1.25.17-1.36-.07-.12-.26-.19-.55-.34z"/><path d="M12.02 2C6.5 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12.02 22C17.53 22 22 17.52 22 12S17.53 2 12.02 2zm0 18.1c-1.65 0-3.2-.45-4.52-1.24l-.32-.19-3 .79.8-2.93-.21-.3A8.08 8.08 0 0 1 3.9 12c0-4.48 3.65-8.12 8.12-8.12S20.14 7.52 20.14 12s-3.65 8.1-8.12 8.1z"/></svg>
+    <p>Whether it's a counter that needs OK POS or you want early access to Hirey, message us directly — no forms, no ticket queue.</p>
+    <a class="btn-whatsapp" href="https://wa.me/60000000000" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.29-.15-1.7-.84-1.97-.93-.26-.1-.46-.15-.65.15-.2.29-.75.93-.92 1.12-.17.2-.34.22-.63.08-.29-.15-1.22-.45-2.32-1.43-.86-.76-1.440-1.71-1.6-2-.17-.29-.02-.45.13-.6.13-.13.29-.34.43-.51.15-.17.2-.29.29-.48.1-.2.05-.37-.02-.51-.08-.15-.65-1.56-.89-2.14-.23-.56-.47-.48-.65-.49-.17-.01-.36-.01-.56-.01-.2 0-.51.07-.78.37-.26.29-1.02 1-1.02 2.42 0 1.43 1.04 2.81 1.19 3 .15.2 2.05 3.13 4.96 4.39.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.11.55-.08 1.7-.7 1.94-1.36.24-.67.24-1.25.17-1.36-.07-.12-.26-.19-.55-.34z"/><path d="M12.02 2C6.5 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12.02 22C17.53 22 22 17.52 22 12S17.53 2 12.02 2zm0 18.1c-1.65 0-3.2-.45-4.52-1.24l-.32-.19-3 .79.8-2.93-.21-.3A8.08 8.08 0 0 1 3.9 12c0-4.48 3.65-8.12 8.12-8.120S20.14 7.52 20.14 12s-3.65 8.1-8.12 8.1z"/></svg>
       Chat with us on WhatsApp
     </a>
   </div>
